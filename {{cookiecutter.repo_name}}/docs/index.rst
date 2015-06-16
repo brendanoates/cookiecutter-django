@@ -15,6 +15,13 @@ Contents:
    deploy
    docker_ec2
    tests
+   readme
+   installation
+   usage
+   reference/index
+   contributing
+   authors
+   changelog
 
 
 

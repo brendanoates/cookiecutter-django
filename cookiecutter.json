@@ -1,8 +1,14 @@
 {
+    "full_name": "Ionel Cristian Maries",
+    "email": "contact@ionelmc.ro",
+    "website": "http://blog.ionelmc.ro",
+    "github_username": "ionelmc",
     "project_name": "project_name",
     "repo_name": "{{ cookiecutter.project_name|replace(' ', '_') }}",
     "author_name": "Your Name",
+    "package_name": "nameless",
     "email": "Your email",
+    "distribution_name": "nameless",
     "description": "A short description of the project.",
     "domain_name": "example.com",
     "version": "0.1.0",
@@ -10,4 +16,9 @@
     "now": "2015/01/13",
     "year": "{{ cookiecutter.now[:4] }}",
     "use_whitenoise": "y"
+    "c_extension_support": "no",
+    "c_extension_optional": "no",
+    "test_matrix_configurator": "no",
+    "test_runner": "pytest",
+    "command_line_interface": "plain"
 }

@@ -10,6 +10,7 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
+from __future__ import unicode_literals
 
 import os
 import sys
@@ -20,6 +21,19 @@ import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration -----------------------------------------------------
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.viewcode',
+    'sphinxcontrib.napoleon'
+]
+if os.getenv('SPELLCHECK'):
+    extensions += 'sphinxcontrib.spelling',
+    spelling_show_suggestions = True
+    spelling_lang = 'en_US'
 
 # If your documentation needs a minimal Sphinx version, state it here.
 # needs_sphinx = '1.0'
@@ -39,10 +53,15 @@ source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
+project = {{ '{0!r}'.format(cookiecutter.project_name) }}
+year = {{ '{0!r}'.format(cookiecutter.year) }}
+author = {{ '{0!r}'.format(cookiecutter.full_name) }}
+copyright = '{0}, {1}'.format(year, author)
+version = release = {{ '{0!r}'.format(cookiecutter.version) }}
 
-# General information about the project.
-project = u'{{ cookiecutter.project_name }}'
-copyright = u"{{ cookiecutter.year }}, {{ cookiecutter.author_name }}"
+import sphinx_py3doc_enhanced_theme
+html_theme = "sphinx_py3doc_enhanced_theme"
+html_theme_path = [sphinx_py3doc_enhanced_theme.get_html_theme_path()]
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

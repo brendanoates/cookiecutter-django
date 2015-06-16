@@ -8,9 +8,27 @@
 *.tmlanguage.cache
 *.tmPreferences.cache
 *.stTheme.cache
+# C extensions
+*.so
 
 # workspace files are user-specific
 *.sublime-workspace
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+venv*/
+pyvenv*/
 
 # project files should be checked into the repository, unless a significant
 # proportion of contributors will probably not be using SublimeText
@@ -26,22 +44,37 @@ __pycache__
 
 # Logs
 *.log
+# Installer logs
 pip-log.txt
 
 # Unit test / coverage reports
 .coverage
 .tox
 nosetests.xml
+htmlcov
 
 # Translations
 *.mo
 *.pot
 
 # Pycharm
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
 .idea
+*.iml
+*.komodoproject
 
 # Vim
+# Complexity
+output/*.html
+output/*/index.html
 
+# Sphinx
+docs/_build
+
+.DS_Store
 *~
 *.swp
 *.swo
@@ -51,3 +84,9 @@ node_modules/
 
 # Compass
 .sass-cache
+.*.sw[po]
+.build
+.ve
+.env
+.bootstrap
+*.bak

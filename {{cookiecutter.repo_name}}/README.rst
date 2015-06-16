@@ -2,19 +2,38 @@
 ==============================
 
 {{cookiecutter.description}}
+| |docs| |travis| |appveyor| |coveralls| |landscape| |scrutinizer|
+| |version| |downloads| |wheel| |supported-versions| |supported-implementations|
 
+.. |docs| image:: https://readthedocs.org/projects/{{ cookiecutter.repo_name }}/badge/?style=flat
+    :target: https://readthedocs.org/projects/{{ cookiecutter.repo_name }}
+    :alt: Documentation Status
 
 LICENSE: BSD
+.. |travis| image:: http://img.shields.io/travis/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/master.png?style=flat
+    :alt: Travis-CI Build Status
+    :target: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
 
 Settings
 ------------
+.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}?branch=master
+    :alt: AppVeyor Build Status
+    :target: https://ci.appveyor.com/project/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
 
-{{cookiecutter.project_name}} relies extensively on environment settings which **will not work with Apache/mod_wsgi setups**. It has been deployed successfully with both Gunicorn/Nginx and even uWSGI/Nginx.
+.. |coveralls| image:: http://img.shields.io/coveralls/{{cookiecutter.project_name}} relies extensively on environment settings which **will not work with Apache/mod_wsgi setups**. It has been deployed successfully with both Gunicorn/Nginx and even uWSGI/Nginx.github_username }}/{{ cookiecutter.repo_name }}/master.png?style=flat
+.. |coveralls| image:: http://img.shields.io/coveralls/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/master.png?style=flat
+    :alt: Coverage Status
+    :target: https://coveralls.io/r/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
 
-For configuration purposes, the following table maps the '{{cookiecutter.project_name}}' environment variables to their Django setting:
+For configuration purposes, the following table maps the '.. |landscape| image:: https://landscape.io/github/{{cookiecutter.project_name}}' environment variables to their Django setting:github_username }}/{{ cookiecutter.repo_name }}/master/landscape.svg?style=flat
+.. |landscape| image:: https://landscape.io/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/master/landscape.svg?style=flat
+    :target: https://landscape.io/github/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/master
+    :alt: Code Quality Status
 
-======================================= =========================== ============================================== ======================================================================
+======================================= =========================== ============================================== ======================================================================.. |version| image:: http://img.shields.io/pypi/v/{{ cookiecutter.distribution_name }}.png?style=flat
+.. |version| image:: http://img.shields.io/pypi/v/{{ cookiecutter.distribution_name }}.png?style=flat
 Environment Variable                    Django Setting              Development Default                            Production Default
+    :alt: PyPI Package latest release
 ======================================= =========================== ============================================== ======================================================================
 DJANGO_AWS_ACCESS_KEY_ID                AWS_ACCESS_KEY_ID           n/a                                            raises error
 DJANGO_AWS_SECRET_ACCESS_KEY            AWS_SECRET_ACCESS_KEY       n/a                                            raises error
@@ -38,37 +57,65 @@ SENDGRID_PASSWORD                       EMAIL_HOST_PASSWORD         n/a         
 DJANGO_DEFAULT_FROM_EMAIL               DEFAULT_FROM_EMAIL          n/a                                            "{{cookiecutter.project_name}} <noreply@{{cookiecutter.domain_name}}>"
 EMAIL_SUBJECT_PREFIX                    EMAIL_SUBJECT_PREFIX        n/a                                            "[{{cookiecutter.project_name}}] "
 ======================================= =========================== ============================================== ======================================================================
+    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}
 
 * TODO: Add vendor-added settings in another table
+.. |downloads| image:: http://img.shields.io/pypi/dm/{{ cookiecutter.distribution_name }}.png?style=flat
+    :alt: PyPI Package monthly downloads
+    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}
 
 Getting up and running
 ----------------------
+.. |wheel| image:: https://pypip.in/wheel/{{ cookiecutter.distribution_name }}/badge.png?style=flat
+    :alt: PyPI Wheel
+    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}
 
 The steps below will get you up and running with a local development environment. We assume you have the following installed:
+.. |supported-versions| image:: https://pypip.in/py_versions/{{ cookiecutter.distribution_name }}/badge.png?style=flat
+    :alt: Supported versions
+    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}
 
 * pip
 * virtualenv
 * PostgreSQL
+.. |supported-implementations| image:: https://pypip.in/implementation/{{ cookiecutter.distribution_name }}/badge.png?style=flat
+    :alt: Supported imlementations
+    :target: https://pypi.python.org/pypi/{{ cookiecutter.distribution_name }}
 
 First make sure to create and activate a virtualenv_, then open a terminal at the project root and install the requirements for local development::
+.. |scrutinizer| image:: https://img.shields.io/scrutinizer/g/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/master.png?style=flat
+    :alt: Scrutinizer Status
+    :target: https://scrutinizer-ci.com/g/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/
 
     $ pip install -r requirements/local.txt
+{{ cookiecutter.project_short_description }}
 
 .. _virtualenv: http://docs.python-guide.org/en/latest/dev/virtualenvs/
+* Free software: BSD license
 
 You can now run the ``runserver_plus`` command::
+Installation
+============
 
     $ python manage.py runserver_plus
+::
 
 The base app will run but you'll need to carry out a few steps to make the sign-up and login forms work. These are currently detailed in `issue #39`_.
+    pip install {{ cookiecutter.distribution_name }}
 
 .. _issue #39: https://github.com/pydanny/cookiecutter-django/issues/39
+Documentation
+=============
 
 **Live reloading and Sass CSS compilation**
+https://{{ cookiecutter.repo_name }}.readthedocs.org/
 
 If you'd like to take advantage of live reloading and Sass / Compass CSS compilation you can do so with the included Grunt task.
+Development
+===========
 
 Make sure that nodejs_ is installed. Then in the project root run::
+To run the all tests run::
 
     $ npm install grunt
 
@@ -165,3 +212,4 @@ You can then deploy by running the following commands.
     ssh -t dokku@yourservername.com dokku run {{cookiecutter.repo_name}} python manage.py createsuperuser
 
 When deploying via Dokku make sure you backup your database in some fashion as it is NOT done automatically.
+    tox
